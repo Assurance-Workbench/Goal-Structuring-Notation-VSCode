@@ -1,0 +1,12 @@
+{
+    "projectName": "GSN",
+    "languages": [{
+        "id": "gsn",
+        "grammar": "src/gsn.langium",
+        "fileExtensions": [".gsn"],
+        "textMate": {
+            "out": "../extension/syntaxes/gsn.tmLanguage.json"
+        }
+    }],
+    "out": "src/generated"
+}

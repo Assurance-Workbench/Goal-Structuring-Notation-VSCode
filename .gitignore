@@ -1,0 +1,7 @@
+node_modules
+pack
+out
+settings.json
+lib
+/generated
+*.vsix

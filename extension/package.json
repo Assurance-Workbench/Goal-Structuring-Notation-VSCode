@@ -1,0 +1,200 @@
+{
+    "name": "goal-structuring-notation-extension",
+    "displayName": "Goal Structuring Notation Language",
+    "description": "A domain specific language for modeling assurance cases using the Goal-Structuring-Notation.",
+    "private": true,
+    "homepage": "https://github.com/Assurance-Workbench",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Assurance-Lab/Goal-Structuring-Notation-VSCode.git",
+      "directory": "Assurance"
+    },  
+    "author": {
+        "name": "Daniel Ratiu"
+    },
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.87.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "icon": "icon.png",
+    "contributes": {
+        "languages": [
+            {
+                "id": "gsn",
+                "aliases": [
+                    "goal-structuring-notation",
+                    "gsn"
+                ],
+                "extensions": [
+                    ".gsn"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "gsn",
+                "scopeName": "source.gsn",
+                "path": "./syntaxes/gsn.tmLanguage.json"
+            }
+        ],
+        "customEditors": [
+            {
+                "viewType": "gsn",
+                "displayName": "GSN Editor",
+                "selector": [
+                    {
+                        "filenamePattern": "*.gsn"
+                    }
+                ],
+                "priority": "option"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "gsn-container",
+                    "title": "GSN",
+                    "icon": "$(symbol-structure)"
+                }
+            ]
+        },
+        "views": {
+            "gsn-container": [
+                {
+                    "id": "gsn",
+                    "type": "webview",
+                    "name": "Goal Structures"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "gsn.diagram.open",
+                "title": "Open in Diagram",
+                "icon": "$(symbol-structure)",
+                "category": "GSN Diagram"
+            },
+            {
+                "command": "gsn.diagram.fit",
+                "title": "Fit to Screen",
+                "category": "GSN Diagram"
+            },
+            {
+                "command": "gsn.diagram.center",
+                "title": "Center selection",
+                "category": "GSN Diagram"
+            },
+            {
+                "command": "gsn.diagram.delete",
+                "title": "Delete selected element",
+                "category": "GSN Diagram"
+            },
+            {
+                "command": "gsn.diagram.export",
+                "title": "Export diagram to SVG",
+                "category": "GSN Diagram"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "gsn.diagram.open",
+                    "when": "editorLangId == 'gsn'"
+                },
+                {
+                    "command": "gsn.diagram.fit",
+                    "when": "gsn-focused"
+                },
+                {
+                    "command": "gsn.diagram.center",
+                    "when": "gsn-focused"
+                },
+                {
+                    "command": "gsn.diagram.delete",
+                    "when": "gsn-focused"
+                },
+                {
+                    "command": "gsn.diagram.export",
+                    "when": "gsn-focused"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "gsn.diagram.open",
+                    "when": "editorLangId == 'gsn'",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title": [
+                {
+                    "command": "gsn.diagram.open",
+                    "when": "editorLangId == 'gsn'",
+                    "group": "navigation"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "gsn.diagram.open",
+                    "when": "resourceExtname == '.gsn'",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "key": "alt+f",
+                "mac": "alt+f",
+                "command": "gsn.diagram.fit",
+                "when": "gsn-focused"
+            },
+            {
+                "key": "alt+c",
+                "mac": "alt+c",
+                "command": "gsn.diagram.center",
+                "when": "gsn-focused"
+            },
+            {
+                "key": "alt+e",
+                "mac": "alt+e",
+                "command": "gsn.diagram.export",
+                "when": "gsn-focused"
+            },
+            {
+                "key": "delete",
+                "mac": "delete",
+                "command": "gsn.diagram.delete",
+                "when": "gsn-focused"
+            }
+        ]
+    },
+    "activationEvents": [
+        "onWebviewPanel:gsn"
+    ],
+    "main": "pack/extension/src/gsn-extension.cjs",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.12.2",
+        "@typescript-eslint/parser": "^8.12.2",
+        "eslint": "^9.14.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-header": "^3.1.1",
+        "eslint-plugin-no-null": "^1.0.2",
+        "lerna": "^8.1.9",
+        "shx": "^0.3.4",
+        "typescript": "^5.6.3",
+        "esbuild": "^0.24.0",
+        "@types/node": "^14.17.3",
+        "@types/vscode": "1.50.0",
+        "sprotty-vscode": "^1.0.0",
+        "vscode-languageclient": "^9.0.1"
+      },
+    "scripts": {
+        "prepare": "yarn run clean && yarn run build",
+        "clean": "shx rm -fr pack",
+        "build": "node esbuild.mjs",
+        "watch": "node esbuild.mjs --watch"
+    }
+}

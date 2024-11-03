@@ -1,0 +1,35 @@
+{
+  "name": "gsn-sprotty-webview",
+  "version": "0.1.0",
+  "description": "Goal Structuring Notation diagram in a VS Code extensions",
+  "private": true,
+  "author": {
+    "name": "Daniel Ratiu"
+  },
+  "files": [
+    "lib",
+    "src",
+    "css"
+  ],
+  "dependencies": {
+    "reflect-metadata": "^0.2.2",
+    "langium": "^3.2.0",
+    "langium-sprotty": "^3.2.0",
+    "sprotty-vscode-webview": "^1.0.0"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
+    "source-map-loader": "^5.0.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn run build",
+    "clean": "shx rm -fr out",
+    "build": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch"
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "gsn-language-server",
+    "displayName": "gsn-langium",
+    "description": "Language server for Goal Structuring Notation Models",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "langium": "^3.0.0",
+        "langium-sprotty": "^3.0.0",
+        "sprotty-elk": "^1.2.0",
+        "vscode-languageserver": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/node": "^14.17.3",
+        "langium-cli": "^3.0.3"
+    },
+    "scripts": {
+        "prepare": "yarn run clean && yarn run langium:generate && yarn run build",
+        "clean": "shx rm -fr out",
+        "build": "tsc --noEmit",
+        "watch": "tsc --noEmit --watch",
+        "langium:generate": "langium generate",
+        "langium:watch": "langium generate --watch"
+    }
+}
