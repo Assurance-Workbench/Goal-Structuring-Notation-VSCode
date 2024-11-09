@@ -3,6 +3,7 @@
     "displayName": "Goal Structuring Notation Language",
     "description": "A domain specific language for modeling assurance cases using the Goal-Structuring-Notation.",
     "private": true,
+    "publisher": "DanielRatiu",
     "homepage": "https://github.com/Assurance-Workbench",
     "repository": {
       "type": "git",
