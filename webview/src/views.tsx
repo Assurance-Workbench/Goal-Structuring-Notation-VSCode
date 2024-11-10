@@ -57,7 +57,8 @@ export class GoalNodeView extends RectangularNodeView {
         if (!this.isVisible(node, context)) {
             return undefined;
         }
-        const diamondSize = (node as unknown as SGoalShapeElement).undeveloped ? 16 : 0;
+        const goalNode = (node as unknown as SGoalShapeElement);
+        const diamondSize = goalNode.undeveloped ? 16 : 0;
         const diamond = new Diamond({ height: diamondSize, width: diamondSize, x: Math.max(node.size.width / 2 - (diamondSize / 2), 0), y: Math.max(node.size.height, 0) });
         const diamondPoints = `${svgStr(diamond.topPoint)} ${svgStr(diamond.rightPoint)} ${svgStr(diamond.bottomPoint)} ${svgStr(diamond.leftPoint)}`;
         return <g>

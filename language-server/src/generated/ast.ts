@@ -21,6 +21,7 @@ export type GSNKeywordNames =
     | ","
     | ";"
     | "assumption"
+    | "away:"
     | "context"
     | "description:"
     | "goal"
@@ -73,6 +74,18 @@ export function isAssumption(item: unknown): item is Assumption {
     return reflection.isInstance(item, Assumption);
 }
 
+export interface AwayLink extends AstNode {
+    readonly $container: Goal;
+    readonly $type: 'AwayLink';
+    goal: Reference<Goal>;
+}
+
+export const AwayLink = 'AwayLink';
+
+export function isAwayLink(item: unknown): item is AwayLink {
+    return reflection.isInstance(item, AwayLink);
+}
+
 export interface Context extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Context';
@@ -89,6 +102,7 @@ export function isContext(item: unknown): item is Context {
 export interface Goal extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Goal';
+    away?: AwayLink;
     description: string;
     inContextOfLinks: Array<InContextOfLink>;
     name: string;
@@ -180,6 +194,7 @@ export function isSupportedByLink(item: unknown): item is SupportedByLink {
 
 export type GSNAstType = {
     Assumption: Assumption
+    AwayLink: AwayLink
     Context: Context
     Goal: Goal
     GoalStructure: GoalStructure
@@ -196,7 +211,7 @@ export type GSNAstType = {
 export class GSNAstReflection extends AbstractAstReflection {
 
     getAllTypes(): string[] {
-        return [Assumption, Context, Goal, GoalStructure, GoalStructureEntityBase, GoalStructureEntityBaseContextTarget, GoalStructureEntityBaseSupportedByTarget, InContextOfLink, Justification, Solution, Strategy, SupportedByLink];
+        return [Assumption, AwayLink, Context, Goal, GoalStructure, GoalStructureEntityBase, GoalStructureEntityBaseContextTarget, GoalStructureEntityBaseSupportedByTarget, InContextOfLink, Justification, Solution, Strategy, SupportedByLink];
     }
 
     protected override computeIsSubtype(subtype: string, supertype: string): boolean {
@@ -220,6 +235,9 @@ export class GSNAstReflection extends AbstractAstReflection {
     getReferenceType(refInfo: ReferenceInfo): string {
         const referenceId = `${refInfo.container.$type}:${refInfo.property}`;
         switch (referenceId) {
+            case 'AwayLink:goal': {
+                return Goal;
+            }
             case 'InContextOfLink:gseb': {
                 return GoalStructureEntityBaseContextTarget;
             }
@@ -243,6 +261,14 @@ export class GSNAstReflection extends AbstractAstReflection {
                     ]
                 };
             }
+            case AwayLink: {
+                return {
+                    name: AwayLink,
+                    properties: [
+                        { name: 'goal' }
+                    ]
+                };
+            }
             case Context: {
                 return {
                     name: Context,
@@ -256,6 +282,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                 return {
                     name: Goal,
                     properties: [
+                        { name: 'away' },
                         { name: 'description' },
                         { name: 'inContextOfLinks', defaultValue: [] },
                         { name: 'name' },

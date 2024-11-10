@@ -102,9 +102,25 @@ export class GsnDiagramGenerator extends LangiumDiagramGenerator {
 
         if (isGoal(gseb)) {
             const goal = gseb as Goal;
+            const awayGoalAddress = goal.away?.goal.ref?.name;
             var goalNode = <SGoalShapeElement> {
                 undeveloped : goal.undeveloped,
+                awayGoal : awayGoalAddress,
                 ...node
+            }
+            if (goal.away) {
+                goalNode.children?.push(<SLabel> {
+                    type: "label",
+                    id: idCache.uniqueId(nodeId + "_label_away_delimiter"),
+                    text: "----------",
+                    cssClasses: ['entity-id']
+                });
+                goalNode.children?.push(<SLabel> {
+                    type: "label",
+                    id: idCache.uniqueId(nodeId + "_label_away"),
+                    text: "\nAway: " + awayGoalAddress,
+                    cssClasses: ['entity-id']
+                });
             }
             return goalNode;
         }

@@ -30,7 +30,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -46,7 +46,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@11"
+                "$ref": "#/rules@12"
               },
               "arguments": []
             },
@@ -77,7 +77,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -97,7 +97,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@14"
+                "$ref": "#/rules@15"
               },
               "arguments": []
             }
@@ -152,6 +152,19 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "cardinality": "?"
           },
           {
+            "$type": "Assignment",
+            "feature": "away",
+            "operator": "=",
+            "terminal": {
+              "$type": "RuleCall",
+              "rule": {
+                "$ref": "#/rules@9"
+              },
+              "arguments": []
+            },
+            "cardinality": "?"
+          },
+          {
             "$type": "Keyword",
             "value": "}"
           }
@@ -181,7 +194,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -201,7 +214,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@14"
+                "$ref": "#/rules@15"
               },
               "arguments": []
             }
@@ -253,7 +266,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -273,7 +286,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@14"
+                "$ref": "#/rules@15"
               },
               "arguments": []
             }
@@ -312,7 +325,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -332,7 +345,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@14"
+                "$ref": "#/rules@15"
               },
               "arguments": []
             }
@@ -371,7 +384,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -391,7 +404,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@14"
+                "$ref": "#/rules@15"
               },
               "arguments": []
             }
@@ -430,7 +443,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@13"
+                "$ref": "#/rules@14"
               },
               "arguments": []
             }
@@ -450,7 +463,7 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "RuleCall",
               "rule": {
-                "$ref": "#/rules@14"
+                "$ref": "#/rules@15"
               },
               "arguments": []
             }
@@ -489,12 +502,12 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "CrossReference",
               "type": {
-                "$ref": "#/rules@9"
+                "$ref": "#/rules@10"
               },
               "terminal": {
                 "$type": "RuleCall",
                 "rule": {
-                  "$ref": "#/rules@13"
+                  "$ref": "#/rules@14"
                 },
                 "arguments": []
               },
@@ -516,12 +529,12 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
                 "terminal": {
                   "$type": "CrossReference",
                   "type": {
-                    "$ref": "#/rules@9"
+                    "$ref": "#/rules@10"
                   },
                   "terminal": {
                     "$type": "RuleCall",
                     "rule": {
-                      "$ref": "#/rules@13"
+                      "$ref": "#/rules@14"
                     },
                     "arguments": []
                   },
@@ -561,12 +574,12 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "terminal": {
               "$type": "CrossReference",
               "type": {
-                "$ref": "#/rules@10"
+                "$ref": "#/rules@11"
               },
               "terminal": {
                 "$type": "RuleCall",
                 "rule": {
-                  "$ref": "#/rules@13"
+                  "$ref": "#/rules@14"
                 },
                 "arguments": []
               },
@@ -588,12 +601,12 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
                 "terminal": {
                   "$type": "CrossReference",
                   "type": {
-                    "$ref": "#/rules@10"
+                    "$ref": "#/rules@11"
                   },
                   "terminal": {
                     "$type": "RuleCall",
                     "rule": {
-                      "$ref": "#/rules@13"
+                      "$ref": "#/rules@14"
                     },
                     "arguments": []
                   },
@@ -602,6 +615,48 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
               }
             ],
             "cardinality": "*"
+          },
+          {
+            "$type": "Keyword",
+            "value": ";"
+          }
+        ]
+      },
+      "definesHiddenTokens": false,
+      "entry": false,
+      "fragment": false,
+      "hiddenTokens": [],
+      "parameters": [],
+      "wildcard": false
+    },
+    {
+      "$type": "ParserRule",
+      "name": "AwayLink",
+      "definition": {
+        "$type": "Group",
+        "elements": [
+          {
+            "$type": "Keyword",
+            "value": "away:"
+          },
+          {
+            "$type": "Assignment",
+            "feature": "goal",
+            "operator": "=",
+            "terminal": {
+              "$type": "CrossReference",
+              "type": {
+                "$ref": "#/rules@1"
+              },
+              "terminal": {
+                "$type": "RuleCall",
+                "rule": {
+                  "$ref": "#/rules@14"
+                },
+                "arguments": []
+              },
+              "deprecatedSyntax": false
+            }
           },
           {
             "$type": "Keyword",

@@ -5,7 +5,10 @@ entry GoalStructure:
     (entities+=GoalStructureEntityBase)*;
 
 Goal:
-    'goal' name=ID  '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* inContextOfLinks+=InContextOfLink* (undeveloped?='undeveloped' ';')? '}' ;
+    'goal' name=ID  '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* inContextOfLinks+=InContextOfLink* 
+                        (undeveloped?='undeveloped' ';')? 
+                        away=AwayLink?
+                    '}' ;
 
 Strategy:
     'strategy' name=ID '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* '}';
@@ -27,6 +30,9 @@ SupportedByLink:
 
 InContextOfLink:
     'in_context_of:' gseb+=[GoalStructureEntityBaseContextTarget:ID] (','+ gseb+=[GoalStructureEntityBaseContextTarget:ID])* ';';
+
+AwayLink:
+    'away:' goal=[Goal:ID] ';';
 
 GoalStructureEntityBaseSupportedByTarget:
     Goal | Strategy | Solution;
