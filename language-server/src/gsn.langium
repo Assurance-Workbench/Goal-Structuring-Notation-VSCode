@@ -5,7 +5,7 @@ entry GoalStructure:
     (entities+=GoalStructureEntityBase)*;
 
 Goal:
-    'goal' name=ID  '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* inContextOfLinks+=InContextOfLink* '}' ;
+    'goal' name=ID  '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* inContextOfLinks+=InContextOfLink* (undeveloped?='undeveloped' ';')? '}' ;
 
 Strategy:
     'strategy' name=ID '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* '}';

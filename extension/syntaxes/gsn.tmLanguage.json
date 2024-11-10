@@ -10,7 +10,7 @@
     },
     {
       "name": "keyword.control.gsn",
-      "match": "\\b(assumption|context|goal|goal_structure|justification|solution|strategy)\\b|\\b(description:|in_context_of:|supported_by:)\\B"
+      "match": "\\b(assumption|context|goal|goal_structure|justification|solution|strategy|undeveloped)\\b|\\b(description:|in_context_of:|supported_by:)\\B"
     },
     {
       "name": "string.quoted.double.gsn",

@@ -1,6 +1,7 @@
 import { GeneratorContext, IdCache, LangiumDiagramGenerator } from 'langium-sprotty';
 import { SEdge, SPort, SLabel, SModelRoot, SShapeElement, SGraph, SModelElement, SCompartment } from 'sprotty-protocol';
 import { Goal, GoalStructure, GoalStructureEntityBase, SupportedByLink, Strategy, isGoal, isSolution, isStrategy, InContextOfLink, isContext, isAssumption, isJustification } from './generated/ast.js';
+import { SGoalShapeElement } from './diagram-generator-shapes.js';
 import { AstNode } from 'langium';
 
 export class GsnDiagramGenerator extends LangiumDiagramGenerator {
@@ -62,9 +63,9 @@ export class GsnDiagramGenerator extends LangiumDiagramGenerator {
             nodeType = "node:solution";
         else if (isStrategy(gseb))
             nodeType = "node:strategy";
-        else if (isGoal(gseb)) 
+        else if (isGoal(gseb)) {
             nodeType = "node:goal";
-        else if (isContext(gseb))
+        } else if (isContext(gseb))
             nodeType = "node:context";
         else if (isAssumption(gseb))
             nodeType = "node:assumption";
@@ -98,6 +99,16 @@ export class GsnDiagramGenerator extends LangiumDiagramGenerator {
         };
         this.traceProvider.trace(node, gseb);
         this.markerProvider.addDiagnosticMarker(node, gseb, ctx);
+
+        if (isGoal(gseb)) {
+            const goal = gseb as Goal;
+            var goalNode = <SGoalShapeElement> {
+                undeveloped : goal.undeveloped,
+                ...node
+            }
+            return goalNode;
+        }
+
         return node;
     }
 

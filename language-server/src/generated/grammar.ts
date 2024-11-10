@@ -133,6 +133,25 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "cardinality": "*"
           },
           {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Assignment",
+                "feature": "undeveloped",
+                "operator": "?=",
+                "terminal": {
+                  "$type": "Keyword",
+                  "value": "undeveloped"
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
+          },
+          {
             "$type": "Keyword",
             "value": "}"
           }

@@ -6,14 +6,14 @@ import { Container, ContainerModule } from 'inversify';
 import {
     configureCommand, configureModelElement, ConsoleLogger, CreateElementCommand, HtmlRootImpl,
     HtmlRootView, LogLevel, ManhattanEdgeRouter, overrideViewerOptions, PreRenderedElementImpl,
-    PreRenderedView, RectangularNodeView, SGraphView, SLabelView, SModelRootImpl,
+    PreRenderedView, SGraphView, SLabelView, SModelRootImpl,
     SRoutingHandleImpl, SRoutingHandleView, TYPES, loadDefaultModules, SGraphImpl, SLabelImpl,
     hoverFeedbackFeature, popupFeature, creatingOnDragFeature, editLabelFeature, labelEditUiModule,
     moveFeature, editFeature, SPortImpl
 } from 'sprotty';
 import { CustomRouter } from './custom-edge-router';
 import { CreateTransitionPort, GsnConnectionEdge, GoalNode, SolutionNode, StrategyNode, ContextNode, AssumptionNode, JustificationNode, InvisibleNode } from './model';
-import { InvisibleNodeView, PolylineArrowEdgeView, PolylineSourceArrowEdgeView, StrategyNodeView, TriangleButtonView, PortView } from './views';
+import { InvisibleNodeView, PolylineArrowEdgeView, PolylineSourceArrowEdgeView, GoalNodeView, StrategyNodeView, TriangleButtonView, PortView } from './views';
 import { SolutionNodeView } from './views';
 
 const gsnDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
@@ -28,7 +28,7 @@ const gsnDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => 
     configureModelElement(context, 'node:invisible', InvisibleNode, InvisibleNodeView, {
         disable: [moveFeature]
     });
-    configureModelElement(context, 'node:goal', GoalNode, RectangularNodeView, {
+    configureModelElement(context, 'node:goal', GoalNode, GoalNodeView, {
         disable: [moveFeature]
     });
     configureModelElement(context, 'node:solution', SolutionNode, SolutionNodeView, {

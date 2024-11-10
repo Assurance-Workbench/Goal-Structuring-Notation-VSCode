@@ -30,6 +30,7 @@ export type GSNKeywordNames =
     | "solution"
     | "strategy"
     | "supported_by:"
+    | "undeveloped"
     | "{"
     | "}";
 
@@ -92,6 +93,7 @@ export interface Goal extends AstNode {
     inContextOfLinks: Array<InContextOfLink>;
     name: string;
     supportedByLinks: Array<SupportedByLink>;
+    undeveloped: boolean;
 }
 
 export const Goal = 'Goal';
@@ -257,7 +259,8 @@ export class GSNAstReflection extends AbstractAstReflection {
                         { name: 'description' },
                         { name: 'inContextOfLinks', defaultValue: [] },
                         { name: 'name' },
-                        { name: 'supportedByLinks', defaultValue: [] }
+                        { name: 'supportedByLinks', defaultValue: [] },
+                        { name: 'undeveloped', defaultValue: false }
                     ]
                 };
             }

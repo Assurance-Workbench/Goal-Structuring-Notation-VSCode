@@ -3,6 +3,7 @@ import { injectable } from 'inversify';
 import { VNode } from 'snabbdom';
 import { PolylineEdgeView, RenderingContext, SEdgeImpl, svg, IView, SPortImpl } from 'sprotty';
 import { Point, toDegrees } from 'sprotty-protocol';
+import { SGoalShapeElement } from '../../language-server/src/diagram-generator-shapes';
 
 @injectable()
 export class PolylineArrowEdgeView extends PolylineEdgeView {
@@ -48,7 +49,31 @@ export class TriangleButtonView implements IView {
 ///////////////////// GSN Shapes //////////////////////////////
 
 import { Hoverable, Selectable } from 'sprotty-protocol/lib/model';
-import { RectangularNodeView, SNodeImpl, SShapeElementImpl, IViewArgs } from 'sprotty';
+import { RectangularNodeView, SNodeImpl, SShapeElementImpl, IViewArgs, Diamond } from 'sprotty';
+
+@injectable()
+export class GoalNodeView extends RectangularNodeView {
+    override render(node: Readonly<SShapeElementImpl & Hoverable & Selectable>, context: RenderingContext, args?: IViewArgs): VNode | undefined {
+        if (!this.isVisible(node, context)) {
+            return undefined;
+        }
+        const diamondSize = (node as unknown as SGoalShapeElement).undeveloped ? 16 : 0;
+        const diamond = new Diamond({ height: diamondSize, width: diamondSize, x: Math.max(node.size.width / 2 - (diamondSize / 2), 0), y: Math.max(node.size.height, 0) });
+        const diamondPoints = `${svgStr(diamond.topPoint)} ${svgStr(diamond.rightPoint)} ${svgStr(diamond.bottomPoint)} ${svgStr(diamond.leftPoint)}`;
+        return <g>
+            <rect class-sprotty-node={node instanceof SNodeImpl} class-sprotty-port={node instanceof SPortImpl}
+                  class-mouseover={node.hoverFeedback} class-selected={node.selected}
+                  x="0" y="0" width={Math.max(node.size.width, 0)} height={Math.max(node.size.height, 0)}></rect>
+
+            <polygon class-sprotty-node={node instanceof SNodeImpl} points={diamondPoints}/>
+            {context.renderChildren(node)}
+        </g>;
+    }
+}
+
+function svgStr(point: Point) {
+    return `${point.x},${point.y}`;
+}
 
 @injectable()
 export class SolutionNodeView extends RectangularNodeView {
