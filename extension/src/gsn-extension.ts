@@ -40,6 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
     );
     registerDefaultCommands(webviewEditorProvider, context, { extensionPrefix: 'gsn' });
     registerLspEditCommands(webviewEditorProvider, context, { extensionPrefix: 'gsn' });
+    registerTextEditorSync(webviewEditorProvider, context);
 }
 
 function createLanguageClient(context: vscode.ExtensionContext): LanguageClient {
@@ -65,7 +66,8 @@ function createLanguageClient(context: vscode.ExtensionContext): LanguageClient 
         synchronize: {
             // Notify the server about file changes to files contained in the workspace
             fileEvents: fileSystemWatcher
-        }
+        },
+        outputChannelName: 'GSN Language Server',
     };
 
     // Create the language client and start the client.
@@ -85,4 +87,25 @@ export async function deactivate(): Promise<void> {
     if (languageClient) {
         await languageClient.stop();
     }
+}
+
+let lastTimestamp = 0;
+function registerTextEditorSync(manager: LspSprottyEditorProvider, context: vscode.ExtensionContext): void {
+    context.subscriptions.push(
+        vscode.workspace.onDidChangeTextDocument(async changeEvent => {
+            if (lastTimestamp == 0) {
+                lastTimestamp = Date.now();
+            } else {
+                let elapsedTimeSinceLastUpdate = Date.now() - lastTimestamp;
+                if (elapsedTimeSinceLastUpdate > 1000) {
+                    vscode.commands.executeCommand("workbench.action.webview.reloadWebviewAction");
+                }
+                lastTimestamp = Date.now();
+            }
+        }),
+        /*vscode.workspace.onDidOpenTextDocument(async document => {
+            manager.openDiagram(document.uri, { reveal: false });
+            vscode.commands.executeCommand("workbench.action.webview.reloadWebviewAction");
+        })*/
+    );
 }
