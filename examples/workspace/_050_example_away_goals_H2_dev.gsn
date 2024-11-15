@@ -1,0 +1,7 @@
+goal_structure Goal_Structgure_G_H2_Dev;
+
+goal G_H2_Dev {
+    description: "Hazard H2 has
+                 been eliminated";
+    undeveloped;
+}

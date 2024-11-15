@@ -8,6 +8,7 @@ import { GsnDiagramGenerator } from './diagram-generator.js';
 import { GSNGeneratedModule, GSNGeneratedSharedModule } from './generated/module.js';
 import { GsnLayoutConfigurator } from './layout-config.js';
 import { registerValidationChecks, GsnValidator } from './gsn-validator.js';
+import { GsnScopeProvider } from './gsn-scopes.js';
 
 /**
  * Declaration of custom services - add your own service classes here.
@@ -44,6 +45,9 @@ export const GsnModule: Module<GsnServices, PartialLangiumServices & SprottyDiag
         ElkFactory: () => () => new ElkConstructor({ algorithms: ['layered'] }),
         ElementFilter: () => new DefaultElementFilter,
         LayoutConfigurator: () => new GsnLayoutConfigurator
+    },
+    references: {
+        ScopeProvider: (services) => new GsnScopeProvider(services)
     }
 };
 

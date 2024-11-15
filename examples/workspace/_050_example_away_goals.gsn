@@ -1,0 +1,26 @@
+goal_structure top_argument;
+
+goal G_Top {
+    description: "The system is 
+                  sufficiently safe
+                  to operate.";
+    supported_by: S_ArgHaz;              
+}
+
+strategy S_ArgHaz {
+    description: "Argument over  
+                  hazards.";
+    supported_by: G_H1, G_H2;
+}
+
+goal G_H1 {
+    description: "Hazard {H1} has
+                  been eliminated.";
+    away: G_H1_Dev;
+}
+
+goal G_H2 {
+    description: "Hazard {H2} has
+                  been eliminated.";
+    away: G_H2_Dev;
+}
