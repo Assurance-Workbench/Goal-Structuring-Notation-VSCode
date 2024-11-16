@@ -22,6 +22,7 @@ export type GSNKeywordNames =
     | ";"
     | "assumption"
     | "away:"
+    | "color:"
     | "context"
     | "description:"
     | "goal"
@@ -64,6 +65,7 @@ export function isGoalStructureEntityBaseSupportedByTarget(item: unknown): item 
 export interface Assumption extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Assumption';
+    color?: string;
     description: string;
     name: string;
 }
@@ -89,6 +91,7 @@ export function isAwayLink(item: unknown): item is AwayLink {
 export interface Context extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Context';
+    color?: string;
     description: string;
     name: string;
 }
@@ -103,6 +106,7 @@ export interface Goal extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Goal';
     away?: AwayLink;
+    color?: string;
     description: string;
     inContextOfLinks: Array<InContextOfLink>;
     name: string;
@@ -143,6 +147,7 @@ export function isInContextOfLink(item: unknown): item is InContextOfLink {
 export interface Justification extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Justification';
+    color?: string;
     description: string;
     name: string;
 }
@@ -156,6 +161,7 @@ export function isJustification(item: unknown): item is Justification {
 export interface Solution extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Solution';
+    color?: string;
     description: string;
     name: string;
 }
@@ -169,6 +175,7 @@ export function isSolution(item: unknown): item is Solution {
 export interface Strategy extends AstNode {
     readonly $container: GoalStructure;
     readonly $type: 'Strategy';
+    color?: string;
     description: string;
     name: string;
     supportedByLinks: Array<SupportedByLink>;
@@ -256,6 +263,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                 return {
                     name: Assumption,
                     properties: [
+                        { name: 'color' },
                         { name: 'description' },
                         { name: 'name' }
                     ]
@@ -273,6 +281,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                 return {
                     name: Context,
                     properties: [
+                        { name: 'color' },
                         { name: 'description' },
                         { name: 'name' }
                     ]
@@ -283,6 +292,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                     name: Goal,
                     properties: [
                         { name: 'away' },
+                        { name: 'color' },
                         { name: 'description' },
                         { name: 'inContextOfLinks', defaultValue: [] },
                         { name: 'name' },
@@ -312,6 +322,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                 return {
                     name: Justification,
                     properties: [
+                        { name: 'color' },
                         { name: 'description' },
                         { name: 'name' }
                     ]
@@ -321,6 +332,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                 return {
                     name: Solution,
                     properties: [
+                        { name: 'color' },
                         { name: 'description' },
                         { name: 'name' }
                     ]
@@ -330,6 +342,7 @@ export class GSNAstReflection extends AbstractAstReflection {
                 return {
                     name: Strategy,
                     properties: [
+                        { name: 'color' },
                         { name: 'description' },
                         { name: 'name' },
                         { name: 'supportedByLinks', defaultValue: [] }

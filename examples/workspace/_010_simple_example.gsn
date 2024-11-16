@@ -3,12 +3,14 @@ goal_structure _010_simple_example;
 goal Top_Goal {
     description: "The system is sufficiently 
                   safe to operate";
+    color: "#165e0d";
     supported_by: ST_1;
 }
                   
 strategy ST_1 {
     description: "Argument over 
                   hazards.";
+    color: "#533d1c";
     supported_by: G2, G3, G4;
 }
 
@@ -23,6 +25,7 @@ solution S2 {
                   demonstrates
                   the elimination 
                   of {H1}";
+    color: "#000044";
 }
 
 goal G3 {

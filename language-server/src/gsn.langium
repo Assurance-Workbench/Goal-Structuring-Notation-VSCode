@@ -5,25 +5,25 @@ entry GoalStructure:
     (entities+=GoalStructureEntityBase)*;
 
 Goal:
-    'goal' name=ID  '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* inContextOfLinks+=InContextOfLink* 
+    'goal' name=ID  '{' 'description:' description=STRING ';' ('color:' color=STRING ';')? supportedByLinks+=SupportedByLink* inContextOfLinks+=InContextOfLink* 
                         (undeveloped?='undeveloped' ';')? 
                         away=AwayLink?
                     '}' ;
 
 Strategy:
-    'strategy' name=ID '{' 'description:' description=STRING ';' supportedByLinks+=SupportedByLink* '}';
+    'strategy' name=ID '{' 'description:' description=STRING ';' ('color:' color=STRING ';')? supportedByLinks+=SupportedByLink* '}';
 
 Solution:
-    'solution' name=ID '{' 'description:' description=STRING ';' '}';
+    'solution' name=ID '{' 'description:' description=STRING ';' ('color:' color=STRING ';')? '}';
 
 Context:
-    'context' name=ID '{' 'description:' description=STRING ';' '}';
+    'context' name=ID '{' 'description:' description=STRING ';' ('color:' color=STRING ';')? '}';
 
 Assumption:
-    'assumption' name=ID '{' 'description:' description=STRING ';' '}';
+    'assumption' name=ID '{' 'description:' description=STRING ';' ('color:' color=STRING ';')? '}';
 
 Justification:
-    'justification' name=ID '{' 'description:' description=STRING ';' '}';
+    'justification' name=ID '{' 'description:' description=STRING ';' ('color:' color=STRING ';')? '}';
 
 SupportedByLink:
     'supported_by:' gseb+=[GoalStructureEntityBaseSupportedByTarget:ID] (','+ gseb+=[GoalStructureEntityBaseSupportedByTarget:ID])* ';';

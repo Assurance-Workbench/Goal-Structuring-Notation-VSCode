@@ -3,7 +3,7 @@ import { injectable } from 'inversify';
 import { VNode } from 'snabbdom';
 import { PolylineEdgeView, RenderingContext, SEdgeImpl, svg, IView, SPortImpl } from 'sprotty';
 import { Point, toDegrees } from 'sprotty-protocol';
-import { SGoalShapeElement } from '../../language-server/src/diagram-generator-shapes';
+import { SGoalShapeElement, SGoalStructureEntityBaseShapeElement } from '../../language-server/src/diagram-generator-shapes';
 
 @injectable()
 export class PolylineArrowEdgeView extends PolylineEdgeView {
@@ -61,15 +61,25 @@ export class GoalNodeView extends RectangularNodeView {
         const diamondSize = goalNode.undeveloped ? 16 : 0;
         const diamond = new Diamond({ height: diamondSize, width: diamondSize, x: Math.max(node.size.width / 2 - (diamondSize / 2), 0), y: Math.max(node.size.height, 0) });
         const diamondPoints = `${svgStr(diamond.topPoint)} ${svgStr(diamond.rightPoint)} ${svgStr(diamond.bottomPoint)} ${svgStr(diamond.leftPoint)}`;
-        return <g>
-            <rect class-sprotty-node={node instanceof SNodeImpl} class-sprotty-port={node instanceof SPortImpl}
-                  class-mouseover={node.hoverFeedback} class-selected={node.selected}
+        const figure = <g>
+            <rect class-mouseover={node.hoverFeedback} class-selected={node.selected}
                   x="0" y="0" width={Math.max(node.size.width, 0)} height={Math.max(node.size.height, 0)}></rect>
 
             <polygon class-sprotty-node={node instanceof SNodeImpl} points={diamondPoints}/>
             {context.renderChildren(node)}
         </g>;
+        addColor(goalNode, figure);
+        return figure;
     }
+}
+
+function addColor(gseb : SGoalStructureEntityBaseShapeElement, figure : any) : any {
+    if (gseb.color != undefined) {
+        figure.children[0].data.attrs.fill = gseb.color;
+    } else { 
+        figure.children[0].data.class['sprotty-node'] = true;
+    }
+    return figure;
 }
 
 function svgStr(point: Point) {
@@ -81,11 +91,13 @@ export class SolutionNodeView extends RectangularNodeView {
     override render(node: Readonly<SShapeElementImpl & Hoverable & Selectable>, context: RenderingContext, args?: IViewArgs): VNode | undefined {
         const radius_x = node.size.width / 2;
         const radius_y = node.size.height / 2;
-        return <g>
-            <ellipse class-sprotty-node={node instanceof SNodeImpl} class-sprotty-port={node instanceof SPortImpl}
+        const figure = <g>
+            <ellipse class-sprotty-port={node instanceof SPortImpl}
                     rx={radius_x} ry={radius_y} cx={radius_x} cy={radius_y}></ellipse>
             {context.renderChildren(node)}
         </g>;
+        addColor(node as unknown as SGoalStructureEntityBaseShapeElement, figure);
+        return figure;
     }
 
     protected getRadius(node: SShapeElementImpl): number {
@@ -113,11 +125,14 @@ export class StrategyNodeView extends RectangularNodeView {
         x = 0;
         y = 0;
         let coords = 'M' + x + ' ' + y + ' L ' + (x - 10) + ' ' + (y + height) + ' L ' + (x + width - 10) + ' ' + (y + height) + ' L ' + (x + width) + ' ' + y + 'Z';
-        return <g>
-            <path class-sprotty-node={node instanceof SNodeImpl} class-sprotty-port={node instanceof SPortImpl}
-                    d={coords}></path>
+        const figure = <g>
+            <path class-sprotty-port={node instanceof SPortImpl}
+                  d={coords}>
+            </path>
             {context.renderChildren(node)}
         </g>;
+        addColor(node as unknown as SGoalStructureEntityBaseShapeElement, figure);
+        return figure;
     }
 
     protected getRadius(node: SShapeElementImpl): number {

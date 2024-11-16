@@ -107,6 +107,32 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "value": ";"
           },
           {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Keyword",
+                "value": "color:"
+              },
+              {
+                "$type": "Assignment",
+                "feature": "color",
+                "operator": "=",
+                "terminal": {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$ref": "#/rules@15"
+                  },
+                  "arguments": []
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
+          },
+          {
             "$type": "Assignment",
             "feature": "supportedByLinks",
             "operator": "+=",
@@ -224,6 +250,32 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "value": ";"
           },
           {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Keyword",
+                "value": "color:"
+              },
+              {
+                "$type": "Assignment",
+                "feature": "color",
+                "operator": "=",
+                "terminal": {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$ref": "#/rules@15"
+                  },
+                  "arguments": []
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
+          },
+          {
             "$type": "Assignment",
             "feature": "supportedByLinks",
             "operator": "+=",
@@ -296,6 +348,32 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "value": ";"
           },
           {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Keyword",
+                "value": "color:"
+              },
+              {
+                "$type": "Assignment",
+                "feature": "color",
+                "operator": "=",
+                "terminal": {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$ref": "#/rules@15"
+                  },
+                  "arguments": []
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
+          },
+          {
             "$type": "Keyword",
             "value": "}"
           }
@@ -353,6 +431,32 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
           {
             "$type": "Keyword",
             "value": ";"
+          },
+          {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Keyword",
+                "value": "color:"
+              },
+              {
+                "$type": "Assignment",
+                "feature": "color",
+                "operator": "=",
+                "terminal": {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$ref": "#/rules@15"
+                  },
+                  "arguments": []
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
           },
           {
             "$type": "Keyword",
@@ -414,6 +518,32 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
             "value": ";"
           },
           {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Keyword",
+                "value": "color:"
+              },
+              {
+                "$type": "Assignment",
+                "feature": "color",
+                "operator": "=",
+                "terminal": {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$ref": "#/rules@15"
+                  },
+                  "arguments": []
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
+          },
+          {
             "$type": "Keyword",
             "value": "}"
           }
@@ -471,6 +601,32 @@ export const GSNGrammar = (): Grammar => loadedGSNGrammar ?? (loadedGSNGrammar =
           {
             "$type": "Keyword",
             "value": ";"
+          },
+          {
+            "$type": "Group",
+            "elements": [
+              {
+                "$type": "Keyword",
+                "value": "color:"
+              },
+              {
+                "$type": "Assignment",
+                "feature": "color",
+                "operator": "=",
+                "terminal": {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$ref": "#/rules@15"
+                  },
+                  "arguments": []
+                }
+              },
+              {
+                "$type": "Keyword",
+                "value": ";"
+              }
+            ],
+            "cardinality": "?"
           },
           {
             "$type": "Keyword",

@@ -78,6 +78,7 @@ export class GsnDiagramGenerator extends LangiumDiagramGenerator {
         var node = {
             type: nodeType,
             id: nodeId,
+            color: gseb.color,
             children: [
                 <SLabel> {
                     type: "label",
