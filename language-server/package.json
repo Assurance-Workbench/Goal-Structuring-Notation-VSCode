@@ -5,6 +5,9 @@
     "version": "0.1.0",
     "private": true,
     "type": "module",
+    "bin": {
+        "gsn-cli": "./bin/cli.js"
+    },
     "dependencies": {
         "langium": "^3.0.0",
         "langium-sprotty": "^3.0.0",
