@@ -13,7 +13,8 @@
     },
     "devDependencies": {
         "@types/node": "^14.17.3",
-        "langium-cli": "^3.0.3"
+        "langium-cli": "^3.0.3",
+        "vitest": "~2.1.5"
     },
     "scripts": {
         "prepare": "yarn run clean && yarn run langium:generate && yarn run build",
@@ -21,6 +22,7 @@
         "build": "tsc --noEmit",
         "watch": "tsc --noEmit --watch",
         "langium:generate": "langium generate",
-        "langium:watch": "langium generate --watch"
+        "langium:watch": "langium generate --watch",
+        "test": "vitest run"
     }
 }
