@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Generate language
-        working-directors: language-server
+        working-directory: language-server
         run: npm run langium:generate
       - run: npm run build 
       - run: npm run test
