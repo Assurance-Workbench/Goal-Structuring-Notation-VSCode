@@ -1,3 +1,10 @@
+
+
+## Usage Example
+
+After installing the VSCode plugin, create a file '_010_simple_example.gsn' and paste the code below. After that, right-click and select 'Open in Diagram' to visualize the diagram into another view.
+
+```
 goal_structure _010_simple_example;
 
 goal Top_Goal {
@@ -65,3 +72,6 @@ goal G6 {
                   been mitigated.";
     away: G_H6_Dev;
 }
+```
+
+![gsn_vscode_screenshot](./doc/gsn_vscode_screenshot.png)
