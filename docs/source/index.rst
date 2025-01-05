@@ -21,10 +21,10 @@ All modifications of the argument, after saved, will be reflected in the diagram
 
 .. figure:: ../images/textual_graphical_side_by_side.png
 
-To export the diagram into a SVG, you need to select the window containing the diagram and press 'Alt + E'. A window will popup and ask for the location and 
+To *export the diagram into a SVG*, you need to select the window containing the diagram and press 'Alt + E'. A window will popup and ask for the location and 
 filename where the SVG is to be saved.
 
-Animated center selection is enabled with 'Alt-C' and fit to screen with 'Alt-F'.
+*Animated center selection* is enabled with 'Alt-C'. *Fit to screen* is enabled with 'Alt-F'.
 
 
 Example Repositories
