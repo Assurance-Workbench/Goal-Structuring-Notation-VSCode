@@ -34,3 +34,17 @@ vsce package
 ## Usage Example
 
 [Usage Example Here](./extension/README.md)
+
+## Build the documentation locally
+
+
+```bash
+cd docs
+make html
+```
+
+The documentation will be available in the `build\docs-html` directory.
+
+## Build the github-pages
+
+Once the changes are pushed, the documentation is automatically updated on github-pages using a workflow.
